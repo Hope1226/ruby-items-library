@@ -5,9 +5,9 @@ class Label
 
   def initialize(title, color)
     @id = rand(1000),
-    @title = title,
-    @color = color,
-    @books = []
+          @title = title,
+          @color = color,
+          @books = []
   end
 
   def add_book(book)
