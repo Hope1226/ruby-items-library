@@ -1,5 +1,3 @@
-require './item'
-
 class Author
   attr_accessor :first_name, :last_name, :items
 
@@ -11,7 +9,7 @@ class Author
   end
 
   def add_item(item)
-    @items.push(self)
+    @items.push(item)
     item.author = self
   end
 end
