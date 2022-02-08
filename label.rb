@@ -1,17 +1,17 @@
 class Label
   attr_accessor :title, :color
 
-  attr_reader :books, :id
+  attr_reader :items, :id
 
   def initialize(title, color)
     @id = rand(1000),
           @title = title,
           @color = color,
-          @books = []
+          @items = []
   end
 
-  def add_book(book)
-    @books << book
-    book.label = self
+  def add_item(item)
+    @items << item
+    item.label = self
   end
 end
