@@ -9,6 +9,9 @@ class Associations
 
   def show_labels
     # lgic for showing lables goes here
+    @labels.map do |label, index|
+      puts "#{index}) Title: #{label.title} Color: #{label.color} "
+    end
   end
 
   def show_authors
