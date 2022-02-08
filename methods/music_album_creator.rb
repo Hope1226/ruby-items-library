@@ -38,13 +38,3 @@ class MusicAlbumCreator
     end
   end
 end
-
-new_music_album = MusicAlbumCreator.new
-rap = Associations.new
-# p new_music_album.music_album_list
-
-new_music_album.add_music_album(rap.labels, rap.authors, rap.genres)
-new_music_album.music_album_list
-new_music_album.show_music_album
-rap.show_genres
-rap.show_labels
