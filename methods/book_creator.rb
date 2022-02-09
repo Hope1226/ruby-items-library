@@ -15,7 +15,7 @@ class BookCreator
     author_first_name, author_last_name, title, color, genre, publish_date, publisher, cover_state = dis_main('book')
     new_book = Book.new(publisher, cover_state, publish_date)
     @book_list << new_book
-
+    
     authors << Author.new(author_first_name, author_last_name).add_item(new_book)
     labels << Label.new(title, color).add_item(new_book)
     genres << Genre.new(genre).add_item(new_book)
