@@ -49,7 +49,8 @@ module Display
 
   def dis_music_data
     print 'On spotify? [ Yes : No ]: '
+    result = gets.chomp.downcase.eql?('yes')
     puts 'Music album has been added successfully'
-    gets.chomp.downcase.eql?('yes')
+    result
   end
 end
