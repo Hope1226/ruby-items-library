@@ -1,3 +1,5 @@
+require 'date'
+
 module Display
   def dis_main(obj)
     const_data = dis_constant_data
@@ -26,6 +28,7 @@ module Display
     genre = gets.chomp
     print 'Please enter publish date in a format [ YYYY-MM-DD ]: '
     publish_date = gets.chomp
+    validate_date(publish_date)
     [author_first_name, author_last_name, title, color, genre, publish_date]
   end
 
@@ -41,6 +44,7 @@ module Display
   def dis_game_data
     print 'Last played at [YYYY-MM-DD]: '
     last_played_at = gets.chomp
+    validate_date(last_played_at)
     print 'Multiplayer? [ Yes : NO ]: '
     multiplayer = gets.chomp.downcase
     puts 'Game has been added successfully'
@@ -52,5 +56,22 @@ module Display
     result = gets.chomp.downcase.eql?('yes')
     puts 'Music album has been added successfully'
     result
+  end
+
+  def validate?(date)
+    Date.iso8601(date.to_s)
+    true
+  rescue ArgumentError
+    false
+  end
+
+  def validate_date(date)
+    if validate?(date)
+      date
+    else
+      print 'Please add a correct date formart [YYYY-MM-DD]: '
+      asnwer_date = gets.chomp
+      validate_date(asnwer_date)
+    end
   end
 end
