@@ -25,9 +25,11 @@ class BookCreator
     if @book_list.empty?
       puts '( No books found )'
     else
-      @book_list.each_with_index.map do |book, index|
-        puts "#{index} Author: #{book.author.first_name} #{book.author.last_name} Genre: #{book.genre.name} Label title:
-        #{book.label.title} publisher: #{book.publisher} Published date: #{book.publish_date}"
+      @book_list.each_with_index.map do |book, i|
+        puts "[#{i + 1}] Author: #{book.author.first_name}
+              #{book.author.last_name} Genre: #{book.genre.name}
+              Label title: #{book.label.title} publisher: #{book.publisher}
+              Published date: #{book.publish_date}"
       end
     end
   end
