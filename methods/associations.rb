@@ -15,7 +15,7 @@ class Associations
 
   def show_authors
     @authors.each_with_index.map do |author, index|
-      puts "[#{index + 1 }] Author: #{author.first_name} #{author.last_name}"
+      puts "[#{index + 1}] Author: #{author.first_name} #{author.last_name}"
     end
   end
 
