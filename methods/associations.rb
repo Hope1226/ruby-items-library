@@ -8,18 +8,18 @@ class Associations
   end
 
   def show_labels
-    # lgic for showing lables goes here
     @labels.each_with_index.map do |label, index|
       puts "[#{index + 1}] Label: #{label.title},  Color: #{label.color} "
     end
   end
 
   def show_authors
-    # lgic for showing lables goes here
+    @authors.each_with_index.map do |author, index|
+      puts "[#{index + 1 }] Author: #{author.first_name} #{author.last_name}"
+    end
   end
 
   def show_genres
-    # lgic for showing lables goes here
     @genres.each_with_index.map do |genre, index|
       puts "[#{index + 1}] Genre: #{genre.name}"
     end
