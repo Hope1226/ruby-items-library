@@ -29,11 +29,11 @@ class MusicAlbumCreator
       puts '( No music albums found )'
     else
       @music_album_list.each_with_index.map do |mus_alb, i|
-        puts "[#{i + 1}] Author: #{mus_alb.author.first_name}
-              #{mus_alb.author.last_name}
-              Genre: #{mus_alb.genre.name} Label title: #{mus_alb.label.title}
-              On Spotify: #{mus_alb.on_spotify}
-              Publish date: #{mus_alb.publish_date}"
+        puts "Music Album [#{i + 1}]
+        Author: #{mus_alb.author.first_name} #{mus_alb.author.last_name}
+        Genre: #{mus_alb.genre.name} Label title: #{mus_alb.label.title}
+        On Spotify: #{mus_alb.on_spotify}
+        Publish date: #{mus_alb.publish_date}"
       end
     end
   end

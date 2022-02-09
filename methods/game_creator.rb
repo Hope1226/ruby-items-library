@@ -31,9 +31,11 @@ class GameCreator
       puts '(No game found)'
     else
       @game_list.each_with_index.map do |game, index|
-        puts "#{index + 1}) Author: #{game.author.first_name} #{game.author.last_name}
-            Published date: #{game.publish_date} Multiplayer: #{game.multiplayer}
-            Last played at: #{game.last_played_at}"
+        puts "Game [#{index + 1}]
+        Author: #{game.author.first_name} #{game.author.last_name}
+        Published date: #{game.publish_date}
+        Multiplayer: #{game.multiplayer}
+        Last played at: #{game.last_played_at}"
       end
     end
   end
