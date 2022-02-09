@@ -2,7 +2,6 @@ require './book'
 require './author'
 require './label'
 require './genre'
-require './methods/associations'
 require './methods/display'
 
 class BookCreator
