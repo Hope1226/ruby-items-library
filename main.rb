@@ -78,7 +78,7 @@ class Main
     when '7', '8', '9'
       add_options(option)
     when '10'
-      puts 'Thank you for using this app!'
+      puts "\n Thank you for using this app! \n"
     end
   end
 end

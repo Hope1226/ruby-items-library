@@ -37,7 +37,7 @@ module Display
     publisher = gets.chomp
     print 'Please enter the cover state [good, medium, bad]: '
     cover_state = gets.chomp
-    puts 'Book has been added successfully'
+    puts "\n Book has been added successfully"
     [publisher, cover_state]
   end
 
@@ -47,14 +47,14 @@ module Display
     validate_date(last_played_at)
     print 'Multiplayer? [ Yes : NO ]: '
     multiplayer = gets.chomp.downcase
-    puts 'Game has been added successfully'
+    puts "\n Game has been added successfully"
     [last_played_at, multiplayer]
   end
 
   def dis_music_data
     print 'On spotify? [ Yes : No ]: '
     result = gets.chomp.downcase.eql?('yes')
-    puts 'Music album has been added successfully'
+    puts "\n Music album has been added successfully"
     result
   end
 
