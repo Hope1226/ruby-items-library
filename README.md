@@ -47,7 +47,7 @@ To setup the Items Library project in your local, in the repo page:
 
 👤 **Carlos Feliz**
 
-- GitHub: [@xJokeer](https://github.com/xJokeer)
+- GitHub: [@CarlosE-Feliz](https://github.com/CarlosE-Feliz)
 - LinkedIn: [@ElimFeliz](https://www.linkedin.com/in/elimfeliz/)
 
 👤 **Umidjon Ustabaev**
