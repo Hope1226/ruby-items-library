@@ -61,7 +61,6 @@ class StoreData
     result
   end
 
-
   def rebuild_objects_music(item, label, author, genre, labels, authors, genres)
     result = []
     @music_albums.map do |data|
