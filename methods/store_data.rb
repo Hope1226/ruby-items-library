@@ -44,7 +44,6 @@ class StoreData
   def rebuild_objects(item, label, author, genre, labels, authors, genres)
     result = []
     @books.map do |data|
-      puts data['label']['title']
       new_book = item.new(data['publisher'], data['cover_state'], data['publish_date'])
       labels << label.new(data['label']['title'], data['label']['color']).add_item(new_book)
       authors << author.new(data['author']['first_name'], data['author']['last_name']).add_item(new_book)
@@ -64,7 +63,6 @@ class StoreData
   def rebuild_objects_music(item, label, author, genre, labels, authors, genres)
     result = []
     @music_albums.map do |data|
-      puts data['label']['title']
       new_music_album = item.new(data['on_spotify'], data['publish_date'])
       labels << label.new(data['label']['title'], data['label']['color']).add_item(new_music_album)
       authors << author.new(data['author']['first_name'], data['author']['last_name']).add_item(new_music_album)
@@ -83,7 +81,6 @@ class StoreData
   def rebuild_games_objects(game, label, author, genre, labels, authors, genres)
     result = []
     @games.map do |data|
-      puts data['label']['title']
       new_game = game.new(data['last_played_at'], data['multiplayer'], data['publish_date'])
       labels << label.new(data['label']['title'], data['label']['color']).add_item(new_game)
       authors << author.new(data['author']['first_name'], data['author']['last_name']).add_item(new_game)
