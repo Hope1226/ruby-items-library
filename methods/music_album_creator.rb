@@ -4,12 +4,12 @@ require './label'
 require './genre'
 require './methods/associations'
 require './methods/display'
+require './methods/store_data'
 require 'json'
 
 class MusicAlbumCreator
-  attr_accessor :music_album_list
-
   include Display
+  attr_reader :music_album_list
 
   def initialize(labels, authors, genres)
     @store = StoreData.new
@@ -17,7 +17,7 @@ class MusicAlbumCreator
     @authors = authors
     @genres = genres
     @store.fetch_data
-    @music_album_list = @store.rebuild_objects(MusicAlbum, Label, Author, Genre, @labels, @authors, @genres)
+    @music_album_list = @store.rebuild_objects_music(MusicAlbum, Label, Author, Genre, @labels, @authors, @genres)
   end
 
   def add_music_album
@@ -27,12 +27,11 @@ class MusicAlbumCreator
     @labels << Label.new(title, color).add_item(new_music_album)
     @genres << Genre.new(genre).add_item(new_music_album)
     @music_album_list << ({
-      on_spotify: music_album_list.on_spotify,
-      cover_state: music_album_list.cover_state,
-      publish_date: music_album_list.publish_date,
-      label: { title: music_album_list.label.title, color: music_album_list.label.color },
-      author: { first_name: music_album_list.author.first_name, last_name: music_album_list.author.last_name },
-      genre: { name: music_album_list.genre.name }
+      on_spotify: new_music_album.on_spotify,
+      publish_date: new_music_album.publish_date,
+      label: { title: new_music_album.label.title, color: new_music_album.label.color },
+      author: { first_name: new_music_album.author.first_name, last_name: new_music_album.author.last_name },
+      genre: { name: new_music_album.genre.name }
     })
     @store.music_albums_set(JSON.generate(@music_album_list))
   end
@@ -44,7 +43,8 @@ class MusicAlbumCreator
       @music_album_list.each_with_index.map do |mus_alb, i|
         puts "Music Album [#{i + 1}]
         Author: #{mus_alb[:author][:first_name]} #{mus_alb[:author][:last_name]}
-        Genre: #{mus_alb[:genre][:name]} Label title: #{mus_alb[:label][:title]}
+        Genre: #{mus_alb[:genre][:name]}
+        Label title: #{mus_alb[:label][:title]}
         On Spotify: #{mus_alb[:on_spotify]}
         Publish date: #{mus_alb[:publish_date]}"
       end

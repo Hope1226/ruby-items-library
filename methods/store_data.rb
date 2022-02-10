@@ -27,11 +27,11 @@ class StoreData
   end
 
   # rubocop:disable Metrics/ParameterLists
-  def rebuild_objects(book, label, author, genre, labels, authors, genres)
+  def rebuild_objects(item, label, author, genre, labels, authors, genres)
     result = []
     @books.map do |data|
       puts data['label']['title']
-      new_book = book.new(data['publisher'], data['cover_state'], data['publish_date'])
+      new_book = item.new(data['publisher'], data['cover_state'], data['publish_date'])
       labels << label.new(data['label']['title'], data['label']['color']).add_item(new_book)
       authors << author.new(data['author']['first_name'], data['author']['last_name']).add_item(new_book)
       genres << genre.new(data['genre']['name']).add_item(new_book)
@@ -42,6 +42,25 @@ class StoreData
         label: { title: new_book.label.title, color: new_book.label.color },
         author: { first_name: new_book.author.first_name, last_name: new_book.author.last_name },
         genre: { name: new_book.genre.name }
+      })
+    end
+    result
+  end
+
+  def rebuild_objects_music(item, label, author, genre, labels, authors, genres)
+    result = []
+    @music_albums.map do |data|
+      puts data['label']['title']
+      new_music_album = item.new(data['on_spotify'], data['publish_date'])
+      labels << label.new(data['label']['title'], data['label']['color']).add_item(new_music_album)
+      authors << author.new(data['author']['first_name'], data['author']['last_name']).add_item(new_music_album)
+      genres << genre.new(data['genre']['name']).add_item(new_music_album)
+      result << ({
+        on_spotify: new_music_album.on_spotify,
+        publish_date: new_music_album.publish_date,
+        label: { title: new_music_album.label.title, color: new_music_album.label.color },
+        author: { first_name: new_music_album.author.first_name, last_name: new_music_album.author.last_name },
+        genre: { name: new_music_album.genre.name }
       })
     end
     result
@@ -62,13 +81,13 @@ class StoreData
   end
 
   def fetch_music_albums
-    exist = File.exist?('./JSON.music_albums.json')
+    exist = File.exist?('./JSON/music_albums.json')
     @music_albums_file = File.open('./JSON/music_albums.json', 'w') unless exist
-    @books_file = File.open('./JSON/music_albums.json')
-    @books = if File.zero?(@music_albums_file)
-                []
-             else
-                JSON.parse(@music_albums_file.read)
-             end
+    @music_albums_file = File.open('./JSON/music_albums.json')
+    @music_albums = if File.zero?(@music_albums_file)
+                      []
+                    else
+                      JSON.parse(@music_albums_file.read)
+                    end
   end
 end
