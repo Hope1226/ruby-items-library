@@ -1,12 +1,14 @@
 class StoreData
   attr_reader :books
 
-  def initialize(books = [])
+  def initialize(books = [], music_albums = [])
     @books = books
+    @music_albums = music_albums
   end
 
   def fetch_data
     fetch_books
+    fetch_music_albums
   end
 
   def books_set(all_books)
@@ -14,8 +16,14 @@ class StoreData
     File.write('./JSON/books.json', @books)
   end
 
+  def music_albums_set(all_albums)
+    @music_albums = all_albums
+    File.write('./JSON/music_albums.json', @music_albums)
+  end
+
   def close_document
     @books_file.close
+    @music_albums_file.close
   end
 
   # rubocop:disable Metrics/ParameterLists
@@ -50,6 +58,17 @@ class StoreData
                []
              else
                JSON.parse(@books_file.read)
+             end
+  end
+
+  def fetch_music_albums
+    exist = File.exist?('./JSON.music_albums.json')
+    @music_albums_file = File.open('./JSON/music_albums.json', 'w') unless exist
+    @books_file = File.open('./JSON/music_albums.json')
+    @books = if File.zero?(@music_albums_file)
+                []
+             else
+                JSON.parse(@music_albums_file.read)
              end
   end
 end
