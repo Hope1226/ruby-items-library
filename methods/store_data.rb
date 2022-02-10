@@ -18,6 +18,7 @@ class StoreData
     @books_file.close
   end
 
+  # rubocop:disable Metrics/ParameterLists
   def rebuild_objects(book, label, author, genre, labels, authors, genres)
     result = []
     @books.map do |data|
@@ -37,6 +38,7 @@ class StoreData
     end
     result
   end
+  # rubocop:enable Metrics/ParameterLists
 
   private
 
