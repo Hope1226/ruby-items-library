@@ -6,10 +6,10 @@ require './methods/display'
 
 class Main
   def initialize
-    @game_controller = GameCreator.new
-    @book_controller = BookCreator.new
-    @music_album_controller = MusicAlbumCreator.new
     @associations = Associations.new
+    @game_controller = GameCreator.new
+    @book_controller = BookCreator.new(@associations.labels, @associations.authors, @associations.genres)
+    @music_album_controller = MusicAlbumCreator.new
   end
 
   def display_options
@@ -51,7 +51,7 @@ class Main
   def add_options(input)
     case input
     when '7'
-      @book_controller.add_book(@associations.labels, @associations.authors, @associations.genres)
+      @book_controller.add_book
       display_options
     when '8'
       @music_album_controller.add_music_album(@associations.labels, @associations.authors, @associations.genres)
