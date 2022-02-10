@@ -1,62 +1,65 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# Project Name
+# Ruby Capstone: Items Library
 
-> Description the project.
+> Ruby app to track main operations in the library.
 
+![screenshot](./app_screenshot.png)
 
 ## Built With
 
-- Major languages
-- Frameworks
-- Technologies used
-
-## Live Demo (if available)
-
-[Live Demo Link](https://livedemo.com)
-
+- Major languages: Ruby
 
 ## Getting Started
-
-**This is an example of how you may give instructions on setting up your project locally.**
-**Modify this file to match your project, remove sections that don't apply. For example: delete the testing section if the currect project doesn't require testing.**
-
 
 To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
+You need to have a `Ruby` and `RSpec` installed in your local machine 
+
 ### Setup
 
-### Install
+To setup the Items Library project in your local, in the repo page: 
+- click on code (dropdown list) > Download as ZIP. 
+- or open terminal of path you want to install project and run this command:
+`git clone git@github.com:Hope1226/ruby-items-library.git`
 
-### Usage
+## Instruction on the usage
+- Run the following comands in your command line:
+- `cd ruby-items-library/`
+- `bundle install`
+- `ruby main.rb`
 
-### Run tests
+## Tests
+- To run tests for current app, please run below commands in your terminal:
+- `cd ruby-items-library`
+- `rspec spec spec/book_spec.rb`
 
-### Deployment
+## Author
 
 
+👤 **Nicu**
 
-## Authors
+- GitHub: [@nicupop729](https://github.com/nicupop729)
+- Twitter: [@nicupop729](https://twitter.com/nicupop729)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/nicolae-pop/)
 
-👤 **Author1**
+👤 **Carlos Feliz**
 
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
+- GitHub: [@xJokeer](https://github.com/xJokeer)
+- LinkedIn: [@ElimFeliz](https://www.linkedin.com/in/elimfeliz/)
 
-👤 **Author2**
+👤 **Umidjon Ustabaev**
 
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
+- GitHub: [@Hope1226](https://github.com/Hope1226)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/umidjon-ustabaev/)
 
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](../../issues/).
+Feel free to check the [issues page](https://github.com/Hope1226/ruby-items-library/issues).
 
 ## Show your support
 
