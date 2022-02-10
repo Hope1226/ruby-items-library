@@ -44,7 +44,7 @@ class MusicAlbumCreator
         puts "Music Album [#{i + 1}]
         Author: #{mus_alb[:author][:first_name]} #{mus_alb[:author][:last_name]}
         Genre: #{mus_alb[:genre][:name]}
-        Label title: #{mus_alb[:label][:title]}
+        Album title: #{mus_alb[:label][:title]}
         On Spotify: #{mus_alb[:on_spotify]}
         Publish date: #{mus_alb[:publish_date]}"
       end

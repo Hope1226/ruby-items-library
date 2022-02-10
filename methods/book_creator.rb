@@ -45,7 +45,7 @@ class BookCreator
         puts "Book [#{i + 1}]
         Author: #{book[:author][:first_name]} #{book[:author][:last_name]}
         Genre: #{book[:genre][:name]}
-        Label title: #{book[:label][:title]}
+        Book title: #{book[:label][:title]}
         publisher: #{book[:publisher]}
         Published date: #{book[:publish_date]}"
       end
