@@ -9,7 +9,7 @@ class Main
     @associations = Associations.new
     @game_controller = GameCreator.new(@associations.labels, @associations.authors, @associations.genres)
     @book_controller = BookCreator.new(@associations.labels, @associations.authors, @associations.genres)
-    @music_album_controller = MusicAlbumCreator.new
+    @music_album_controller = MusicAlbumCreator.new(@associations.labels, @associations.authors, @associations.genres)
   end
 
   def display_options
@@ -54,7 +54,7 @@ class Main
       @book_controller.add_book
       display_options
     when '8'
-      @music_album_controller.add_music_album(@associations.labels, @associations.authors, @associations.genres)
+      @music_album_controller.add_music_album
       display_options
     when '9'
       @game_controller.add_game
