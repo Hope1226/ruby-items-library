@@ -7,7 +7,7 @@ require './methods/display'
 class Main
   def initialize
     @associations = Associations.new
-    @game_controller = GameCreator.new
+    @game_controller = GameCreator.new(@associations.labels, @associations.authors, @associations.genres)
     @book_controller = BookCreator.new(@associations.labels, @associations.authors, @associations.genres)
     @music_album_controller = MusicAlbumCreator.new(@associations.labels, @associations.authors, @associations.genres)
   end
@@ -57,7 +57,7 @@ class Main
       @music_album_controller.add_music_album
       display_options
     when '9'
-      @game_controller.add_game(@associations.labels, @associations.authors, @associations.genres)
+      @game_controller.add_game
       display_options
     end
   end
