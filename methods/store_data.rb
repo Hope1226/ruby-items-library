@@ -1,12 +1,17 @@
 class StoreData
-  attr_reader :books
+  attr_reader :books, :games
 
-  def initialize(books = [])
+  def initialize(books = [], games = [])
     @books = books
+    @games = games
   end
 
   def fetch_data
     fetch_books
+  end
+
+  def fetch_games_data
+    fetch_games
   end
 
   def books_set(all_books)
@@ -14,9 +19,19 @@ class StoreData
     File.write('./JSON/books.json', @books)
   end
 
+  def games_set(all_games)
+    @games = all_games
+    File.write('./JSON/games.json', @games)
+  end
+
   def close_document
     @books_file.close
   end
+
+  def close_game_document
+    @games_file.close
+  end
+
 
   # rubocop:disable Metrics/ParameterLists
   def rebuild_objects(book, label, author, genre, labels, authors, genres)
@@ -38,6 +53,26 @@ class StoreData
     end
     result
   end
+
+  def rebuild_games_objects(game, label, author, genre, labels, authors, genres)
+    result = []
+    @games.map do |data|
+      puts data['label']['title']
+      new_game = game.new(data['last_played_at'], data['multiplayer'], data['publish_date'])
+      labels << label.new(data['label']['title'], data['label']['color']).add_item(new_game)
+      authors << author.new(data['author']['first_name'], data['author']['last_name']).add_item(new_game)
+      genres << genre.new(data['genre']['name']).add_item(new_game)
+      result << ({
+            last_played_at: new_game.last_played_at,
+            multiplayer: new_game.multiplayer,
+            publish_date: new_game.publish_date,
+            label: { title: new_game.label.title, color: new_game.label.color },
+            author: { first_name: new_game.author.first_name, last_name: new_game.author.last_name },
+            genre: { name: new_game.genre.name }
+      })
+    end
+    result
+  end
   # rubocop:enable Metrics/ParameterLists
 
   private
@@ -51,5 +86,16 @@ class StoreData
              else
                JSON.parse(@books_file.read)
              end
+  end
+
+  def fetch_games 
+    exist = File.exist?('./JSON/games.json')
+    @games_file = File.open('./JSON/games.json', 'w') unless exist
+    @games_file = File.open('./JSON/games.json')
+    @games = if File.zero?(@games_file)
+             []
+            else
+              JSON.parse(@games_file.read)
+            end
   end
 end
