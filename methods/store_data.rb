@@ -32,7 +32,6 @@ class StoreData
     @games_file.close
   end
 
-
   # rubocop:disable Metrics/ParameterLists
   def rebuild_objects(book, label, author, genre, labels, authors, genres)
     result = []
@@ -63,12 +62,12 @@ class StoreData
       authors << author.new(data['author']['first_name'], data['author']['last_name']).add_item(new_game)
       genres << genre.new(data['genre']['name']).add_item(new_game)
       result << ({
-            last_played_at: new_game.last_played_at,
-            multiplayer: new_game.multiplayer,
-            publish_date: new_game.publish_date,
-            label: { title: new_game.label.title, color: new_game.label.color },
-            author: { first_name: new_game.author.first_name, last_name: new_game.author.last_name },
-            genre: { name: new_game.genre.name }
+        last_played_at: new_game.last_played_at,
+        multiplayer: new_game.multiplayer,
+        publish_date: new_game.publish_date,
+        label: { title: new_game.label.title, color: new_game.label.color },
+        author: { first_name: new_game.author.first_name, last_name: new_game.author.last_name },
+        genre: { name: new_game.genre.name }
       })
     end
     result
@@ -88,14 +87,14 @@ class StoreData
              end
   end
 
-  def fetch_games 
+  def fetch_games
     exist = File.exist?('./JSON/games.json')
     @games_file = File.open('./JSON/games.json', 'w') unless exist
     @games_file = File.open('./JSON/games.json')
     @games = if File.zero?(@games_file)
-             []
-            else
-              JSON.parse(@games_file.read)
-            end
+               []
+             else
+               JSON.parse(@games_file.read)
+             end
   end
 end
